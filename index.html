@@ -6,11 +6,45 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Matador de monstros</title>
+<!--    pure Css-->
     <link rel="stylesheet" href="style.css">
+<!--    Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<!--    Vue JS-->
     <script src="https://unpkg.com/vue"></script>
-    <script src="app.js"></script>
 </head>
 <body>
+<div id="app">
+    <div class="panel scores">
+<!--        Jogador-->
+        <div class="score">
+            <h1>Jogador</h1>
+            <div class="life-bar">
+                <div class="life"
+                     :class="{danger:playerLife <20}"
+                     :style="{width:playerLife + '%'}"
+                ></div>
+            </div>
+            <div>{{playerLife}}%</div>
+        </div>
 
+<!--        Monstro-->
+        <div class="score">
+            <h1>Monstro</h1>
+            <div class="life-bar">
+                <div class="life"
+                :class="{danger:monsterLife <20}"
+                :style="{width:monsterLife + '%'}"
+                ></div>
+            </div>
+            <div>{{monsterLife}}%</div>
+        </div>
+    </div>
+
+    <div class="panel result">result</div>
+    <div class="panel buttons">buttons</div>
+    <div class="panel logs">Logs</div>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
