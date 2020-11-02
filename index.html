@@ -41,7 +41,10 @@
         </div>
     </div>
 
-    <div class="panel result">result</div>
+    <div v-if="hasResult" class="panel result" >
+        <div v-if="monsterLife == 0" class="win"> você ganhou :-) </div>
+        <div v-else class="lose">você perdeu !</div>
+    </div>
     <div class="panel buttons">buttons</div>
     <div class="panel logs">Logs</div>
 </div>

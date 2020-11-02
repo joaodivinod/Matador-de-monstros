@@ -45,3 +45,18 @@ body{
 .life-bar .danger{
     background-color: rgb(198, 7, 7);
 }
+
+/*RESULTADO*/
+.result{
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.3rem
+}
+.result .win{
+    color: rgb(66, 198, 7);
+}
+
+.result .lose{
+    color: rgb(198, 7, 7);
+}
