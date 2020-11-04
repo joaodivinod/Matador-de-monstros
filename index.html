@@ -1,64 +1,52 @@
-<!doctype html>
-<html lang="pt-BR">
+!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Matador de monstros</title>
-<!--    pure Css-->
+    <title>Matador de Monstros</title>
     <link rel="stylesheet" href="style.css">
-<!--    Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-<!--    Vue JS-->
     <script src="https://unpkg.com/vue"></script>
 </head>
+
 <body>
 <div id="app">
     <div class="panel scores">
-<!--        Jogador-->
         <div class="score">
             <h1>Jogador</h1>
             <div class="life-bar">
-                <div class="life"
-                     :class="{danger:playerLife <20}"
-                     :style="{width:playerLife + '%'}"
-                ></div>
+                <div class="life" :class="{danger : playerLife < 20}" :style="{width: playerLife + '%'}"></div>
             </div>
-            <div>{{playerLife}}%</div>
+            <div>{{ playerLife }} %</div>
         </div>
-
-<!--        Monstro-->
         <div class="score">
             <h1>Monstro</h1>
             <div class="life-bar">
-                <div class="life"
-                :class="{danger:monsterLife <20}"
-                :style="{width:monsterLife + '%'}"
-                ></div>
+                <div class="life" :class="{danger : monsterLife < 20}" :style="{width: monsterLife + '%'}"></div>
             </div>
-            <div>{{monsterLife}}%</div>
+            <div>{{ monsterLife }} %</div>
         </div>
     </div>
-
-    <div v-if="hasResult" class="panel result" >
-        <div v-if="monsterLife == 0" class="win"> você ganhou :-) </div>
-        <div v-else class="lose">você perdeu !</div>
+    <div v-if="hasResult" class="panel result">
+        <div v-if="monsterLife == 0" class="win">Você ganhou! =)</div>
+        <div v-else class="lose">Você perdeu! =(</div>
     </div>
     <div class="panel buttons">
         <template v-if="running">
-            <button @click="atack(false)" class="btn atack">Ataque</button>
-            <button @click="atack()" class="btn especial-atack">Ataque especial</button>
-            <button @click="healAndHurt" class="btn heal">Curar</button>
-            <button @click="running = false" class="btn give-up">Desistir</button>
+            <button class="btn attack" @click="attack(false)">Ataque</button>
+            <button class="btn especial-attack" @click="attack(true)">Ataque especial</button>
+            <button class="btn heal" @click="healAndHurt">Curar</button>
+            <button class="btn give-up" @click="running = false">Desistir
+            </button>
         </template>
-
-        <template v-else>
-            <button @click="startGame()" class="btn new-game">Iniciar Jogo</button>
-        </template>
+        <button v-else class="btn new-game" @click="startGame">Iniciar jogo</button>
     </div>
-    <div class="panel logs">Logs</div>
+    <div class="panel logs" v-if="logs.length">
+        <ul>
+            <li v-for="log in logs" class="log" :class="log.cls"> {{log.text}}</li>
+        </ul>
+    </div>
 </div>
 <script src="app.js"></script>
 </body>
+
 </html>
